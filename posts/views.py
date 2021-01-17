@@ -4,41 +4,35 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.http import HttpResponse
-
 
 def list_posts(request):
     posts = [
         {
-            'name': 'My Dog.',
-            'user': 'Yésica Cortes',
+            'title': 'Mont Blanc',
+            'user': {
+                'name': 'Yésica Cortés',
+                'picture': 'https://picsum.photos/60/60/?image=1027'
+            },
             'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M hrs'),
-            'picture': 'https://picsum.photos/id/237/200/200'
+            'photo': 'https://picsum.photos/800/600?image=1036',
         },
         {
-            'name': 'Khe.',
-            'user': 'Pink Woman',
+            'title': 'Via Láctea',
+            'user': {
+                'name': 'Christian Van der Henst',
+                'picture': 'https://picsum.photos/60/60/?image=1005'
+            },
             'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M hrs'),
-            'picture': 'https://picsum.photos/id/84/200/200'
+            'photo': 'https://picsum.photos/800/800/?image=903',
         },
         {
-            'name': 'Nautural web.',
-            'user': 'Pancho Villa',
+            'title': 'Nuevo auditorio',
+            'user': {
+                'name': 'Uriel (thespianartist)',
+                'picture': 'https://picsum.photos/60/60/?image=883'
+            },
             'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M hrs'),
-            'picture': 'https://picsum.photos/id/784/200/200'
-        },
+            'photo': 'https://picsum.photos/500/700/?image=1076',
+        }
     ]
-    content = []
-    for post in posts:
-        content.append("""
-        <p>{name}</p>
-        <p>{user}</p>
-        <p>{timestamp}</p>
-        <figure><img src="{picture}"/></figure>
-        """.format(
-            name=post.get('name'),
-            user=post.get('user'),
-            timestamp=post.get('timestamp'),
-            picture=post.get('picture'),
-            ))
-    return HttpResponse('<br>'.join(content))
+    return render(request, 'feed.html', {'posts': posts})

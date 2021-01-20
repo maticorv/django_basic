@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # LOCAL_APPS
     # Aca irian las apps de nuestros proyectos que vamoss a instalar, cosas como posts, perfiles
     'posts',
+    'users',
 ]
 
 MIDDLEWARE = [

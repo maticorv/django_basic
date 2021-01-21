@@ -13,10 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from platzigram import views as local_views
+from platzigram import views as local_views, settings
 from posts import views as post_views
+
+
+def setting(args):
+    pass
+
 
 urlpatterns = [
     path('', local_views.hola),
@@ -25,4 +31,4 @@ urlpatterns = [
     path('sorted/', local_views.sort_integers),
     path('hi/<str:name>/<int:age>', local_views.say_hi),
     path('posts/', post_views.list_posts),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -35,4 +35,4 @@ def list_posts(request):
             'photo': 'https://picsum.photos/500/700/?image=1076',
         }
     ]
-    return render(request, 'feed.html', {'posts': posts})
+    return render(request, 'posts/feed.html', {'posts': posts})

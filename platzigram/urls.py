@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from platzigram import views as local_views, settings
 from posts import views as post_views
+from users import views as users_views
 
 
 def setting(args):
@@ -25,10 +26,11 @@ def setting(args):
 
 
 urlpatterns = [
-    path('', local_views.hola),
-    path('admin/', admin.site.urls),
-    path('hola/', local_views.hola),
-    path('sorted/', local_views.sort_integers),
-    path('hi/<str:name>/<int:age>', local_views.say_hi),
-    path('posts/', post_views.list_posts),
+    path('', local_views.hola, name='time'),
+    path('admin/', admin.site.urls, name="admin"),
+    path('hola/', local_views.hola, name="hello"),
+    path('sorted/', local_views.sort_integers, name="sort"),
+    path('hi/<str:name>/<int:age>', local_views.say_hi, name="hi"),
+    path('posts/', post_views.list_posts, name="feed"),
+    path('users/login', users_views.login_view, name='login'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

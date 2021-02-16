@@ -36,3 +36,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, 'users/login.html')
+
+
+def update_profile(request):
+    return render(request, 'users/update_profile.html')

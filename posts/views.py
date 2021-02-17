@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from posts.form import PostForm
+from posts.models import Post
 
 
 @login_required
@@ -37,6 +38,7 @@ def list_posts(request):
             'photo': 'https://picsum.photos/500/700/?image=1076',
         }
     ]
+    posts = Post.objects.all().order_by('created')
     return render(request, 'posts/feed.html', {'posts': posts})
 
 

@@ -9,13 +9,13 @@
         {% for post in posts %}
         <div class="col-lg-4 offset-lg-4" style="min-height: 385px;">
             <div class="media">
-                <img class="mr-3 rounded-circle" class="animate__animated animate__fadeIn animate__delay-2s" style="min-height: 60px; min-width: 60px;" src="{{ post.user.picture }}" alt="{{ post.user.name }}">
+                <img class="mr-3 rounded-circle" class="animate__animated animate__fadeIn animate__delay-2s" style="min-height: 60px; min-width: 60px; max-height: 60px; max-width: 60px;" src="/media/{{ post.profile.picture }}" >
                 <div class="media-body">
-                    <h5 class="mt-0">{{ post.user.name }}</h5>
-                    {{ post.timestamp }}
+                    <h5 class="mt-0">{{ post.user_id.name }}</h5>
+                    {{ post.created }}
                 </div>
             </div>
-            <img class="img-fluid mt-3 border rounded animate__animated animate__fadeIn animate__delay-2s" style="min-height: 250px;" src="{{ post.photo }}" alt="{{ post.title }}">
+            <img class="img-fluid mt-3 border rounded animate__animated animate__fadeIn animate__delay-2s" style="min-height: 250px;" src="/media/{{ post.photo }}" alt="{{ post.title }}">
             <h6 class="ml-1 mt-1">{{ post.title }}</h6>
         </div>
         {% endfor %}

@@ -12,13 +12,6 @@
     <div class="row justify-content-md-center">
         <div class="col-6 p-4" id="profile-box">
 
-            {% if messages %}
-                <ul class="messages list-unstyled">
-                    {% for message in messages %}
-                    <li  {% if message.tags %} class="alert alert-success {{ message.tags }} " {% endif %}> {{ message }} </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
 
             <form action="{% url 'update_profile' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -62,6 +55,13 @@
                         placeholder="Phone number"
                         value="{{ profile.phone_number }}"
                     />
+                {% if messages %}
+                    <ul class="messages list-unstyled mt-5">
+                        {% for message in messages %}
+                        <li  {% if message.tags %} class="alert alert-success {{ message.tags }} " {% endif %}> {{ message }} </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
                 </div>
 
 

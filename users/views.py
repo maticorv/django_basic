@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import ProfileForm
+from .forms import ProfileForm, SignupForm
 from django.contrib import messages
 
 
@@ -68,4 +68,19 @@ def update_profile(request):
         }
     )
 
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    form = SignupForm()
+    return render(
+        request=request,
+        template_name='users/signup.html',
+        context={
+            'form': form
+        }
+    )
 
